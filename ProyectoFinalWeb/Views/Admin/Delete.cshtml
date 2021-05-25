@@ -1,0 +1,48 @@
+﻿@model ProyectoFinalWeb.Pelicula
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = null;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/Delete.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
+
+    <div>
+        <hr />
+        <div class="container formulario">
+            <h2>Desea Eliminar esta pelicula?</h2>
+            <div class=row>
+                <div class="col-lg-3">
+                    <img class="img-responsive" src="@Url.Action("RetrieveImage", new { id = @Model.IdPelicula })" width="300" height="300" />
+                </div>
+                <div class="col-lg-3" style="margin-left:50px">
+                    <h4 style="color:darkgoldenrod"> Director :</h4><b>@Url.Content(Model.Director)</b>
+                    <h4 style="color:darkgoldenrod">Elenco:</h4><b>@Url.Content(Model.Elenco)</b>
+                    <h4 style="color:darkgoldenrod">Genero:</h4><b>@Url.Content(Model.Genero)</b>
+                </div>
+                <br />
+                <div class="col-lg-3" id="co">
+                    <p class="table-responsive"><h4 style="color:darkgoldenrod">Sipnosis:</h4> <b>@Url.Content(Model.Sinopsis)</b></p>
+                </div>
+
+                <button type="submit" class="btn btn-block btn-outline-warning w-50 mx-auto mt-4">Eliminar</button>
+            </div>
+        </div>
+
+        <a href="/Admin/Index" class="btn btn-transparent btn-lg"><i class="bi bi-arrow-left-circle-fill mt-0" style="font-size: 5rem;"></i></a>
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    </div>
+}

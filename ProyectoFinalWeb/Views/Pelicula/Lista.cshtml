@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ProyectoFinalWeb.Pelicula>
+
+<link rel="stylesheet" type="text/css" href="~/list-css/table-style.css" />
+<link rel="stylesheet" type="text/css" href="~/list-css/basictable.css" />
+<script type="text/javascript" src="~/list-js/jquery.basictable.min.js"></script>
+<body>
+    <!-- //nav -->
+    <!-- faq-banner -->
+    <div class="faq">
+        <h4 class="latest-text w3_faq_latest_text w3_latest_text">Lista de Peliculas</h4>
+        <div class="container">
+            <div class="agileits-news-top">
+                <ol class="breadcrumb">
+                    <li><a href="/Peliculas1/Index">Inicio</a></li>
+                    <li class="active">Lista</li>
+                </ol>
+            </div>
+            <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                <div id="myTabContent" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+                        <div class="agile-news-table">
+                            <div class="w3ls-news-result">
+                                <h4 style="margin-bottom:20px">Numero de peliculas: <span>@Model.Count()</span></h4>
+                            </div>
+                            <table id="table-breakpoint" class="usertable">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Foto</th>
+                                        <th>Titulo</th>
+                                        <th>Director</th>
+                                        <th>Elenco</th>
+                                        <th>Sinopsis</th>
+                                        <th>Genero</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.IdPelicula</td>
+                                            <td>
+                                                <a href="/Pelicula/Details/@item.IdPelicula">
+                                                    <img src="@Url.Action("RetrieveImage", new { id = @item.IdPelicula })" alt="no se ve" title="album-name" class="img-responsive img-lista" />
+                                                </a>
+                                            </td>
+                                            <td><b>@item.Nombre</b></td>
+                                            <td>@item.Director</td>
+                                            <td class="w3-list-info">@item.Elenco</td>
+                                            <td class="w3-list-info">@item.Sinopsis</td>
+                                            <td>@item.Genero</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //here ends scrolling icon -->
+    <script>
+        const item = document.querySelector("#InicioP");
+        item.classList.remove("active");
+        const item2 = document.querySelector("#InicioL");
+        item2.classList.add("active");
+    </script>
+</body>

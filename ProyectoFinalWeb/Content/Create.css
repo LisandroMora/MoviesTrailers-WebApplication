@@ -1,0 +1,26 @@
+body {
+    background-image: url("https://s3-us-west-2.amazonaws.com/flx-editorial-wordpress/wp-content/uploads/2018/03/13153742/RT_300EssentialMovies_700X250.jpg");
+}
+
+label {
+    color: darkgoldenrod;
+}
+
+.formulario {
+    background-color: black;
+    padding: 50px;
+    border-radius: 10px;
+    opacity: 0.85;
+    margin-top: 30px;
+}
+
+.formulario h2 {
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+textarea{
+    width:100%;
+}

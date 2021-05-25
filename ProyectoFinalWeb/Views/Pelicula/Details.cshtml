@@ -1,0 +1,34 @@
+﻿@model ProyectoFinalWeb.Pelicula
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container-details">
+    <div class="agileits-news-top">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="active">Lista</li>
+            <li>Detalles</li>
+        </ol>
+    </div>
+    <div class="row">
+        <iframe width="100%" height="500" src="@Url.Content(Model.Trailers)" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+        <hr />
+        <h2 class="text-center"> @Url.Content(Model.Nombre)</h2>
+        <hr />
+        <div class="col-lg-3">
+            <img src="@Url.Action("RetrieveImage", new { id = Model.IdPelicula })" alt="no se ve" title="album-name" class="img-responsive img-details" />
+        </div>
+        <div class="col-lg-3" style="margin-left:50px">
+            <h4 style="color:darkgoldenrod; margin: 10px auto">Director</h4><span margin: 10px auto">@Url.Content(Model.Director)</span>
+            <h4 style="color:darkgoldenrod; margin: 10px auto">Elenco</h4><span margin: 10px auto">@Url.Content(Model.Elenco)</span>
+            <h4 style="color:darkgoldenrod; margin: 10px auto">Genero</h4><span margin: 10px auto">@Url.Content(Model.Genero)</span>
+        </div>
+        <div class="col-lg-3" style="margin-left:100px">
+            <h4 style="color:darkgoldenrod; margin:10px auto">Sipnosis</h4><span>@Url.Content(Model.Sinopsis)</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿@model ProyectoFinalWeb.Pelicula
+
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+
+
+@using (Html.BeginForm("Create", "Admin", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/Create.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
+
+</head>
+    <body>
+        <div class="container w-75 formulario ">
+            <h2>Agregar Pelicula </h2>
+            <form>
+                <div class="form-row mb-2">
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Nombre <span class="text-danger">*</span></label>
+                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", placeholder = "Rapido y Furiosos..." } })
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Director <span class="text-danger">*</span></label>
+                        @Html.EditorFor(model => model.Director, new { htmlAttributes = new { @class = "form-control", placeholder = "Tarantino..." } })
+                        @Html.ValidationMessageFor(model => model.Director, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-row mb-2">
+                    <div class="form-group  col-md-12">
+                        <label class="font-weight-bold">Elenco <span class="text-danger">*</span></label>
+                        @Html.EditorFor(model => model.Elenco, new { htmlAttributes = new { @class = "form-control", placeholder = "David, Sofia, Mario..." } })
+                        @Html.ValidationMessageFor(model => model.Elenco, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-row mb-2">
+                    <div class="form-group col-md-6 ">
+                        <label class="font-weight-bold">Genero <span class="text-danger">*</span></label>
+                        @Html.EditorFor(model => model.Genero, new { htmlAttributes = new { @class = "form-control", placeholder = "Terror, Suspenso..." } })
+                        @Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Trailer <span class="text-danger">*</span></label>
+                        @Html.EditorFor(model => model.Trailers, new { htmlAttributes = new { @class = "form-control", placeholder = "Link de youtube del video..." } })
+                        @Html.ValidationMessageFor(model => model.Trailers, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-row mb-2">
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Foto <span class="text-danger">*</span></label>
+                        <div>
+                            <input type="file" id="upload" name="upload" class="text-warning" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Sipnosis <span class="text-danger">*</span></label>
+                        <br />
+                        <textarea rows="3" class="col-md-12" @Html.TextAreaFor(model => model.Sinopsis, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingrese sobre que trata la pelicula..." } })> </textarea>
+                        @Html.ValidationMessageFor(model => model.Sinopsis, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <button type="submit" class="btn btn-block btn-outline-warning w-50 mx-auto mt-4">Agregar</button>
+            </form>
+        </div>
+
+        <a href="/Admin/Index" class="btn btn-transparent btn-lg"><i class="bi bi-arrow-left-circle-fill mt-0" style="font-size: 5rem;"></i></a>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+
+}

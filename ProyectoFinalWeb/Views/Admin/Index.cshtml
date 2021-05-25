@@ -1,0 +1,119 @@
+﻿@model IEnumerable<ProyectoFinalWeb.Pelicula>
+
+@{
+    ViewBag.Title = "Menu";
+    Layout = null;
+}
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+                function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            background-image: url("https://s3-us-west-2.amazonaws.com/flx-editorial-wordpress/wp-content/uploads/2018/03/13153742/RT_300EssentialMovies_700X250.jpg");
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="w3layouts_logo">
+                <a href="/Pelicula/Index"><h1>Trailers<span>Movies</span></h1></a>
+            </div>
+            <div class="w3l_sign_in_register ml-5">
+                <ul>
+                    <li class="nav-item w-100 mt-2" style="margin-left:50%">
+                        @Html.Partial("_LoginPartial")
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="movies_nav">
+        <div class="container">
+            <nav class="navbar navbar-default">
+                <div class="navbar-header navbar-left">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                    <nav>
+                        <ul class="nav navbar-nav">
+                            <li id="InicioP"><a href="/Pelicula/Index">Inicio</a></li>
+                            <li id="InicioL"><a href="/Pelicula/Lista">Lista de peliculas</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <a href="/Admin/Create" class="btn btn-success btn-group" style=" display:block; margin: 10px auto; padding:10px; top: 50%; width:30%;">Agregar Pelicula</a>
+
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.Reverse())
+            {
+                <div class="contenedorADM col-sm-3">
+                    <div>
+                        <h3>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </h3>
+                    </div>
+                    <div>
+                        <img src="@Url.Action("RetrieveImage", new { id = @item.IdPelicula })" alt="no se ve" title="album-name" class="img-responsive img-CRUD" />
+                    </div>
+                    <div class="btn-group btn-block" id="controles">
+                        <a href="@Url.Action("Edit", new { id = item.IdPelicula})" class="btn btn-warning"> <i class="glyphicon glyphicon-edit"></i> </a>
+                        <a href="/Pelicula/Details/@item.IdPelicula" class="btn btn-info"> <i class="glyphicon glyphicon-folder-close"></i> </a>
+                        <a href="@Url.Action("Delete", new { id = item.IdPelicula})" class="btn btn-danger"> <i class="glyphicon glyphicon-erase"></i> </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="footer" style="margin-top:100px">
+        <div class="container">
+            <div class="w3ls_footer_grid">
+                <div class="col-md-6 w3ls_footer_grid_left">
+                    <div class="w3ls_footer_grid_left1">
+                        <h2>Proyecto Final de Web</h2>
+                        <div style="color:white;">
+                            <p>Lisandro Mora | 2019-9051</p>
+                            <p>Rafael Abreu | 2019-8690</p>
+                            <p>Jenrry Monegro | 2019-8577</p>
+                            <p>Richard Hernandez | 2019-8415</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 w3ls_footer_grid_right">
+                    <a href="index.html"><h2>Trailers<span>Movies</span></h2></a>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="col-md-5 w3ls_footer_grid1_left">
+                <p>&copy; 2021 Trailers Movies. Pagina para ver trailers</p>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</body>
+
+
+
